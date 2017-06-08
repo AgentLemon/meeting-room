@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'devise'
 gem 'google-api-client', '~> 0.11', require: 'google/apis/calendar_v3'
 gem 'slim'
 

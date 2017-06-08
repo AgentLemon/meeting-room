@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
-  def redirect
+  before_action :authenticate_user!, only: [:init, :callback]
+
+  def init
     service = OAuth2Service.new(scope: Google::Apis::CalendarV3::AUTH_CALENDAR, redirect_uri: callback_url)
     client = service.client
     redirect_to client.authorization_uri.to_s

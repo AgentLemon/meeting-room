@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608123015) do
+ActiveRecord::Schema.define(version: 20170608141327) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "rooms", force: :cascade do |t|
+    t.string   "google_id"
+    t.string   "slug"
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_rooms_on_slug", using: :btree
+  end
 
   create_table "server_settings", force: :cascade do |t|
     t.text     "token"

@@ -21,11 +21,15 @@ class HomeController < ApplicationController
   end
 
   def events
+    @room = Room.find_by_slug(params[:room_id])
+    fail ActiveRecord::RecordNotFound if @room.blank?
+
     @event_list = CalendarService.new.list_events(
-      "cloudcastlegroup.com_2d3539313231353732323334@resource.calendar.google.com",
+      @room.google_id,
       time_min: DateTime.now.beginning_of_day.rfc3339,
       time_max: DateTime.now.end_of_day.rfc3339
     )
+    
     render json: @event_list
   end
 end

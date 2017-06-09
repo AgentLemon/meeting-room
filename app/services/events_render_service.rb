@@ -23,7 +23,7 @@ class EventsRenderService
   end
 
   def now_pos
-    @now_pos ||= get_time_pos_norm(Time.now)
+    @now_pos ||= get_time_pos_norm(Time.now.in_time_zone("Europe/Samara"))
   end
 
   def current?(event)

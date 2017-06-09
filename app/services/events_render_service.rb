@@ -38,6 +38,10 @@ class EventsRenderService
     @grid_half_lines ||= get_grid_lines(30)
   end
 
+  def empty?
+    @events.empty?
+  end
+
   private
 
   def get_time_pos_norm(time)

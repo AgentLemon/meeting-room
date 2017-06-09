@@ -1,0 +1,17 @@
+.room
+  .room_title = @room.name
+  .room_events style="height: #{ @render_service.get_day_height }px"
+    .grid
+      - @render_service.grid_full_lines.each do |pos|
+        .grid_full-line style="top: #{ pos }px"
+      - @render_service.grid_half_lines.each do |pos|
+        .grid_half-line style="top: #{ pos }px"
+    - @render_service.events.each do |event|
+      .event style=@render_service.get_style(event) class=("-current" if @render_service.current?(event))
+        .event_time.-start = event.start_str
+        - if @render_service.render_end_time?(event)
+          .event_time.-end = event.end_str
+        .event_inner
+          .event_summary = event.summary
+    .room_now style="top: #{ @render_service.now_pos }px"
+      .room_now-label now

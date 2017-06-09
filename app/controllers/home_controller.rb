@@ -29,7 +29,13 @@ class HomeController < ApplicationController
       time_min: DateTime.now.beginning_of_day.rfc3339,
       time_max: DateTime.now.end_of_day.rfc3339
     )
-    
-    render json: @event_list
+
+    respond_to do |format|
+      format.html do
+        @render_service = EventsRenderService.new(@event_list)
+        render
+      end
+      format.json{ render json: @event_list }
+    end
   end
 end

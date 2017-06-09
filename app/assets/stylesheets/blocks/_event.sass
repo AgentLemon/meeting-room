@@ -1,0 +1,29 @@
+.event
+  position: absolute
+  width: 100%
+  &_inner
+    background-color: #bbffcc
+    border: solid 1px #55bb55
+    padding: 2px 5px
+    height: calc(100% - 4px)
+    overflow: hidden
+    position: absolute
+    left: 0px
+    right: 45px
+  &.-current
+    .event_inner
+      background-color: #ffbbcc
+      border-color: #bb5555
+  &_summary
+    font-weight: bold
+  &_time
+    color: #777
+    font-size: 0.7em
+    position: absolute
+    right: 0
+    width: 45px
+    text-align: right
+    &.-start
+      top: -7px
+    &.-end
+      bottom: -8px
